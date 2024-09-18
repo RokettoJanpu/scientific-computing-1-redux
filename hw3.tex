@@ -305,7 +305,7 @@
 	
 	
 
-	\item The claim is that
+	\item The claim is that (here we omit the subscript for the 2--norm)
 	\[\min_{Ax=b}\norm{x}=\norm{x^*}\]
 	First we see that $x^*$ solves $Ax=b$.
 	\[Ax^* = AA^T(AA^T)\inv b = b\]
@@ -319,6 +319,7 @@
 	In turn, we get
 	\[\norm{x}^2 = \norm{(x-x^*)+x^*}^2
 	= \norm{x-x^*}^2 + \norm{x^*}^2 + 2(x-x^*)^Tx^*
+	= \norm{x-x^*}^2 + \norm{x^*}^2
 	\ge \norm{x^*}^2\]
 	Hence $Ax^*=b$, with $\norm{x}\ge\norm{x^*}$ whenever $Ax=b$. This establishes the claim.
 	
