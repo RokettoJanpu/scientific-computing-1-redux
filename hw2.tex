@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+\def\mc#1{\mathcal{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\newcommand{\sse}{\subseteq}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\e}{\epsilon}
+\newcommand{\vp}{\varphi}
+\renewcommand{\th}{\theta}
+\newcommand{\x}{\xi}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\ip}[2]{\lbr{#1,#2}}
+\renewcommand{\bar}{\overline}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\Arg}{Arg}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\rep}{\overset{.}{=}}
+
+% title
+\title{Scientific Computing HW 2}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+
+
+
+\begin{enumerate}
+	
+	
+	
+	\item We obtain $\hat f(x)$ by computing $f(x)$ with relative error $\e$,
+	\[\e = \frac{\hat f(x) - f(x)}{f(x)}
+	\imp \hat f(x) = f(x) + \e f(x)\]
+	
+	Write a first order Taylor expansion of $f(x+h)$ with remainder,
+	\[f(x+h) = f(x) = f'(x)h + \frac12f''(\x)h^2,
+	\quad x < \x < x + h\]
+	This gives
+	\[\frac{f(x+h)-f(x)}{h} - f'(x) = \frac12f''(\x)h\]
+	Using the above, along with $f,f\in O(1)$, we can estimate the forward difference error as
+	\begin{align*}
+		\abs{\frac{\hat f(x+h)-\hat f(x)}{h} - f'(x)} &= \abs{\frac{f(x+h)-f(x)}{h} - f'(x) + \e\frac{f(x+h)-f(x)}{h}} \\
+		&\le \frac12|f''(\x)|h + \frac\e h|f(x+h)-f(x)| \\
+		&\sim \frac12h + \frac{2\e}{h} =: g(h)
+	\end{align*}
+	Now we find $h^*$ that minimizes $g(h)$.
+	\[g'(h) = 0
+	\imp \frac12 - \frac{2\e}{h^2} = 0
+	\imp \frac{2\e}{h^2} = \frac12
+	\imp h^2 = 4\e
+	\imp h^* = 2\sqrt\e\]
+	
+	
+	
+	\item
+	
+	\begin{enumerate}
+		
+		
+		
+		\item The first two Chebyshev polynomials are
+		\[T_0(x) = \cos(0\cdot\arccos x) = 1,
+		\quad T_1(x) = \cos(1\cdot\arccos x) = x\]
+		The rest of the recurrence is given by
+		\begin{align*}
+			T_{k+1}(x) + T_{k-1}(x) &= \cos((k+1)\arccos x) + \cos((k-1)\arccos x) \\
+			&= 2\cos\frac{(k+1)\arccos x+(k-1)\arccos x}{2}\cos\frac{(k+1)\arccos x-(k-1)\arccos x}{2} \\
+			&= 2xT_k(x)
+		\end{align*}
+		i.e., $T_{k+1}(x)=2xT_k(x)-T_{k-1}(x)$.
+		
+		
+		
+		\item Label the bases $\mc B=\brc{T_0,\dots,T_n}$ of $\mc P_n$ and $\mc C=\brc{T_0,\dots,T_{n-1}}$ of $\mc P_{n-1}$. For convenience, given $f\in\mc P_{n-1}$ and $v\in\bR^n$, we write  $f\rep v$ to mean that $v$ is the coordinate vector of $f$ wrt $\mc C$.
+		
+		\[T_0' = 0 \rep (0,\dots,0)^T,
+		\quad T_1' = 1 = 1T_0 \rep (1,0,\dots,0)^T\]
+		From the recurrence in the last part,
+		\[T_2(x) = 2xT_1(x) - T_0(x) = 2x^2 - 1
+		\imp T_2' = 4T_1 \rep (0,4,0,\dots,0)^T\]
+		For the rest of the calculations, we cite Eq. (3.25) from Chapter 3 in "Numerical Methods for Special Functions",
+		\[T_k = \frac12\br{\frac{T_{k+1}'}{k+1}-\frac{T_{k-1}'}{k-1}}, ~k\ge 2\]
+		This gives us a recurrence for computing derivatives,
+		\[T_{k+1}' = 2(k+1)T_k + \frac{k+1}{k-1}T_{k-1}', ~k\ge 2\]
+		Resuming calculations,
+		\[T_3' = 6T_2 + 3T_1' = 6T_2 + 3T_0 \rep (3,0,6,0,0,0,0)^T\]
+		\[T_4' = 8T_3 + 2T_2' = 8T_3 + 8T_1 \rep (0,8,0,8,0,0,0)^T\]
+		\[T_5' = 10T_4 + \frac53T_3' = 10T_4 + 10T_2 + 5T_0 \rep (5,0,10,0,10,0,0)^T\]
+		\[T_6' = 12T_5 + \frac32T_4' = 12T_5 + 12T_3 + 12T_1 \rep (0,12,0,12,0,12,0)^T\]
+		\[T_7' = 14T_6 + \frac75T_5' = 14T_6 + 14T_4 + 14T_2 + 7T_0 \rep (7,0,14,0,14,0,14)^T\]
+		Thus the matrix of the derivative map $\dv{x}:\mc P_n\to\mc P_{n-1}$ wrt the bases $\mc B$ and $\mc C$ is
+		\[\sbr{\dv{x}}_{\mc C\leftarrow\mc B} = 
+		\m{
+		0 & 1 & 0 & 3 & 0 & 5 & 0 & 7 \\
+		0 & 0 & 4 & 0 & 8 & 0 & 12 & 0 \\
+		0 & 0 & 0 & 6 & 0 & 10 & 0 & 14 \\
+		0 & 0 & 0 & 0 & 8 & 0 & 12 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 10 & 0 & 14 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 12 & 0 \\
+		0 & 0 & 0 & 0 & 0 & 0 & 0 & 14
+		}\]
+		
+		
+	\end{enumerate}
+
+
+
+	\item The $p-$norm of $A$ is
+	\[\norm{A}_p := \max_{\norm{x}_p=1}\norm{Ax}_p\]
+	
+	\begin{enumerate}
+		
+		
+		
+		\item Let $A_1,\dots,A_n$ denote the columns of $A$, so that
+		\[\sum_{i=1}^m |a_{ij} = \norm{A_j}_1\]
+		For all $x$,
+		\begin{align*}
+			\norm{Ax}_1 &= \norm{\sum_{i=1}^n x_iA_i}_1 \\
+			&\le \sum_{i=1}^n |x_i|\norm{A_i}_1 \\
+			&\le \underbrace{\max_{1\le j\le n}\norm{A_j}_1}_{=:M} \cdot \sum_{i=1}^n |x_i| \\
+			&= M\norm{x}_1
+		\end{align*}
+		This implies $\norm{Ax}_1\le M$ for $\norm{x}_1=1$, thus $\norm{A}_1\le M$.
+		
+		Pick $j_0$ that maximizes $\norm{A_j}_1$ (as a function of $j$). Then the $j_0$'th standard basis vector $e_{j_0}$ is the maximizing vector since $\norm{e_{j_0}}_1=1$ and
+		\[\norm{A}_1 \ge \norm{Ae_{j_0}}_1
+		= \norm{A_{j_0}}_1
+		= M\]
+		Moreover, this inequality establishes $\norm{A}_1=M$.
+		
+		
+		
+		\item Let us write $\norm{A}_\infty$ instead of $\norm{A}_\text{max}$. For all $x$,
+		\begin{align*}
+			\norm{Ax}_\infty &= \max_{1\le i\le m}|(Ax)_i| \\
+			&\le \max_{1\le i\le m}\sum_{j=1}^n |a_{ij}||x_j| \\
+			&\le \underbrace{\max_{1\le i\le m}\sum_{i=1}^n |a_{ij}|}_{=:M} \cdot \max_{1\le j\le n} |x_j| \\
+			&= M\norm{x}_\infty
+		\end{align*}
+		This implies $\norm{Ax}_\infty \le M$ for $\norm{x}_\infty=1$, thus $\norm{A}_\infty\le M$.
+		
+		Pick $i_0$ that maximizes $\sum_{j=1}^n|a_{ij}|$ (as a function of $i$). Then the vector $x$ with components $x_j:=\sign(a_{i_0j})$ is the maximizing vector since $\norm{x}_\infty=1$ and
+		\begin{align*}
+			\norm{A}_\infty &\ge \norm{Ax}_\infty \\
+			&= \max_{1\le i\le m}|(Ax)_i| \\
+			&= \max_{1\le i\le m}\abs{\sum_{j=1}^n a_{ij}x_j} \\
+			&\ge \abs{\sum_{j=1}^n a_{i_0j}x_j} \\
+			&= \sum_{j=1}^n |a_{i_0j}| & x_j = \sign(a_{i_0j})\\
+			&= M
+		\end{align*}
+		Moreover, this inequality establishes $\norm{A}_\infty=M$.
+		
+		
+		
+	\end{enumerate}
+	
+	
+\end{enumerate}
+	
+	
+\end{document}
