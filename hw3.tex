@@ -43,7 +43,7 @@
 % greek
 \newcommand{\e}{\epsilon}
 \newcommand{\p}{\varphi}
-\renewcommand{\t}{\theta}
+\renewcommand{\t}{\sim}
 \renewcommand{\L}{\Lambda}
 \renewcommand{\l}{\lambda}
 \newcommand{\s}{\sigma}
@@ -64,6 +64,8 @@
 \renewcommand{\d}{\partial}
 \newcommand{\pf}{\tbf{Proof. }}
 \DeclareMathOperator{\sign}{sign}
+\renewcommand{\u}{\tilde{u}}
+\DeclareMathOperator{\House}{House}
 
 % title
 \title{Scientific Computing HW 3}
@@ -105,16 +107,73 @@
 		
 		
 		
-		\item
+		\item Using $\sign(a)^2=1$ and $\sign(a)a=|a|$, compute
+		\[\u^Tx = \norm{x}^2 + \sign(x_1)x_1\norm{x} = \norm{x}^2 + |x_1|\norm{x}\]
+		\[\u^T\u = \norm{x}^2 + \sign(x_1)^2\norm{x}^2 + 2\sign(x_1)x_1\norm{x} = 2\norm{x}^2 + 2|x_1|\norm{x}\]
+		Then compute
+		\begin{align*}
+			Px &= x - 2\frac{\u^Tx}{\u^T\u}\u \\
+			&= x - \u \\
+			&= -\sign(x_1)\norm{x}e_1
+		\end{align*}
 		
 		
 		
-		\item
+		\item For convenience, write matrix entries as superscripts, reserving subscripts for the iteration described in the problem. We will prove using finite induction that for $1\le j\le n$, the first $j$ diagonal entries of $A_{j}$ are
+		\[-\sign(A_0^{11})\norm{A_0(1:m,1)}, \dots, -\sign(A_{j-1}^{jj})\norm{A_{j-1}(j:m,j)}\]
+		and that the entries below the first $j$ diagonal entries are zero.
+		
+		The case $j=1$ is proven by $\House(A_0(1:m,1))A_0(1:m,1)=-\sign(A_0^{11})\norm{A_0(1:m,1)}e_1$, which is the first column of $A_1=P_1A_0$.
+		
+		Assume the claim is true for $j$. Then (use $\t$ to denote possibly nonzero entries)
+		\[A_j =
+		\arr{ccc|c}{
+		-\sign(A_0^{11})\norm{A_0(1:m,1)} & & \t & \\
+		& \ddots & & \t \\
+		& & -\sign(A_{j-1}^{jj})\norm{A_{j-1}(j:m,j)} & \\
+		\hline
+		& 0_{(m-j)\times j} & & \t
+		}\]
+		From the algorithm,
+		\[P_{j+1} =
+		\arr{c|c}{
+		I_{j\times j} & 0_{j\times(m-j)} \\
+		\hline
+		0_{(m-j)\times j} & \House(A_j(j+1:m,j+1))
+		}\]
+		Then, by the fact $\House(A_j(j+1:m,j+1))A_j(j+1:m,j+1)=-\sign(A_j^{j+1,j+1})\norm{A_j(j+1:m,j+1)}e_1$,
+		\[A_{j+1} = P_{j+1}A_j =
+		\arr{ccc|c}{
+			-\sign(A_0^{11})\norm{A_0(1:m,1)} & & \t & \\
+			& \ddots & & \t \\
+			& & -\sign(A_{j}^{j+1,j+1})\norm{A_{j}(j+1:m,j+1)} & \\
+			\hline
+			& 0_{(m-j-1)\times(j+1)} & & \t
+		}\]
+		This closes the induction. Having proven the claim, setting $j=n$ gives
+		\[A_n =
+		\arr{ccc}{
+			-\sign(A_0^{11})\norm{A_0(1:m,1)} & & \t \\
+			& \ddots & \\
+			& & -\sign(A_{n-1}^{nn})\norm{A_{n-1}(n:m,n)} \\
+			\hline
+			& 0_{(m-n)\times n} &
+		}\]
+		
+		To guarantee that $A_n$ has positive diagonal entries, note that
+		\[-\sign(A_{j-1}^{jj})\norm{A_{j-1}(j:m,j)} > 0
+		\iff -\sign(A_{j-1}^{jj}) > 0
+		\iff A_{j-1}^{jj} < 0\]
+		If $A_{j-1}^{jj}>0$, change its sign before constructing $P_j$.
 		
 		
 		
-		\item
-		
+		\item From the iteration,
+		\[A_n = P_nP_{n-1}\dots P_1A\]
+		From $P_j^2=I$, we have $P_j\inv=P_j$, hence
+		\[(P_nP_{n-1}\dots P_1)\inv = P_1\inv P_2\inv\dots P_n\inv = P_1P_2\dots P_n\]
+		Which in turn gives a QR decomposition of $A$.
+		\[A = \underbrace{P_1\dots P_n}_{=:Q}\underbrace{A_n}_{=:R}\]
 		
 		 
 	\end{enumerate}
@@ -246,7 +305,22 @@
 	
 	
 
-	\item We see that 
+	\item The claim is that
+	\[\min_{Ax=b}\norm{x}=\norm{x^*}\]
+	First we see that $x^*$ solves $Ax=b$.
+	\[Ax^* = AA^T(AA^T)\inv b = b\]
+	Now let $x$ solve $Ax=b$. Then
+	\[Ax = Ax^*
+	\imp A(x-x^*) = 0\]
+	From this,
+	\[(x-x^*)^Tx^* = (x-x^*)^TA^T(AA^T)\inv b
+	= (A(x-x^*))^T(AA^T)\inv b
+	= 0\]
+	In turn, we get
+	\[\norm{x}^2 = \norm{(x-x^*)+x^*}^2
+	= \norm{x-x^*}^2 + \norm{x^*}^2 + 2(x-x^*)^Tx^*
+	\ge \norm{x^*}^2\]
+	Hence $Ax^*=b$, with $\norm{x}\ge\norm{x^*}$ whenever $Ax=b$. This establishes the claim.
 	
 	
 	
