@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+\DeclareMathOperator{\Span}{span}
+
+% greek
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\varphi}
+\renewcommand{\t}{\theta}
+\renewcommand{\l}{\lambda}
+\renewcommand{\u}{\mu}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\newcommand{\sse}{\subseteq}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\ip}[2]{\lbr{#1,#2}}
+\renewcommand{\bar}{\overline}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\Arg}{Arg}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+
+% title
+\title{Scientific Computing HW 4}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+
+
+
+\begin{enumerate}
+	
+	
+	
+	\item e
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	\item Before answering each part, we cite the following
+	\[\grad(x^TAx) = (A+A^T)x,
+	\quad \grad(x^Tx) = 2x\]
+	We compute
+	\[\grad Q(x) = \frac{(x^Tx)(A+A^T)x - (x^TAx)2x}{(x^Tx)^2}\]
+	Thus
+	\[\grad Q(x) = 0
+	\iff (x^Tx)(A+A^T)x = 2(x^TAx)x
+	\iff (A+A^T)x = \frac{2x^TAx}{x^Tx}x\]
+	
+	\begin{enumerate}
+		
+		
+		
+		
+		\item Under the condition $A$ is symmetric, the above computation gives
+		\[\grad Q(x) = 0
+		\iff Ax = \frac{x^TAx}{x^Tx}x
+		\iff \br{\frac{x^TAx}{x^Tx},x} \text{ is an eigenpair of $A$}\]
+		
+		
+		
+		\item If $A$ is asymmetric, the above calculation says $\grad Q(x)=0$ iff $\br{\frac{2x^TAx}{x^Tx},x}$ is an eigenpair of $A+A^T$.
+		
+		
+		
+		
+	\end{enumerate}
+
+
+
+	\pagebreak
+	
+	
+	
+	\item
+	
+	\begin{enumerate}
+		
+		
+		
+		\item Lemma: If $A$ is nonsingular and $(\l,v)$ is an eigenpair of $A$ then $(\l\inv,v)$ is an eigenpair of $A\inv$.
+		
+		Proof of lemma: From $A$ being nonsingular, $\l\ne0$. Then
+		\[Av = \l v
+		\imp v = \l A\inv v
+		\imp A\inv v = \l\inv v\]
+		
+		Since $\u$ is not an eigenvalue of $A$, we know $A-\u I$ is nonsingular. Then
+		\[(A-\u I)v = Av - \u Iv
+		= \l v - \u v
+		= (\l-\u)v\]
+		hence $((\l-\u),v)$ is an eigenpair of $A-\u I$. By the lemma, $((\l-\u)\inv,v)$ is an eigenpair of $(A-\u I)\inv$.
+		
+		
+		
+		\item
+		
+		
+		
+		\item
+		
+		
+		
+	\end{enumerate}
+	
+	
+	
+\end{enumerate}
+	
+	
+\end{document}
