@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  1 OCT 2024 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  1 OCT 2024 16:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1117,8 +1117,30 @@ File: uesint.fd
 [3]
 
 [4]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-[5] (hw5.aux)
+Overfull \hbox (5.40807pt too wide) in paragraph at lines 298--299
+[]\OT1/cmr/m/n/10 (-20) Code: []$\OT1/cmtt/m/n/10 https : / / github . com / Ro
+kettoJanpu / scientific-[]computing-[]1-[]redux / blob / main / hw5 . ipynb$[] 
+
+ []
+
+<hw5 p1.png, id=45, 337.26pt x 250.68657pt>
+File: hw5 p1.png Graphic file (type png)
+<use hw5 p1.png>
+Package pdftex.def Info: hw5 p1.png  used on input line 301.
+(pdftex.def)             Requested size: 269.80836pt x 200.54951pt.
+<hw5 p2.png, id=47, 358.33875pt x 277.035pt>
+File: hw5 p2.png Graphic file (type png)
+<use hw5 p2.png>
+Package pdftex.def Info: hw5 p2.png  used on input line 302.
+(pdftex.def)             Requested size: 250.83542pt x 193.92317pt.
+
+
+[5 <./hw5 p1.png> <./hw5 p2.png>] (hw5.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
@@ -1127,11 +1149,11 @@ Package rerunfilecheck Info: File `hw5.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33949 strings out of 473898
- 714547 string characters out of 5726007
+ 33976 strings out of 473898
+ 714999 string characters out of 5726007
  1952960 words of memory out of 5000000
- 56229 multiletter control sequences out of 15000+600000
- 568068 words of font info for 102 fonts, out of 8000000 for 9000
+ 56258 multiletter control sequences out of 15000+600000
+ 568236 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,15n,145p,1002b,1357s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\RyanPC\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
@@ -1148,10 +1170,11 @@ fb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr17.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmr7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on hw5.pdf (5 pages, 148053 bytes).
+nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/RyanPC/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on hw5.pdf (5 pages, 187789 bytes).
 PDF statistics:
- 110 PDF objects out of 1000 (max. 8388607)
- 18 named destinations out of 1000 (max. 500000)
- 18445 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 118 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
+ 18967 words of extra memory for PDF output out of 20736 (max. 10000000)
 
