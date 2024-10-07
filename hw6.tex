@@ -1,0 +1,170 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+\DeclareMathOperator{\Span}{span}
+
+% greek
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\varphi}
+\renewcommand{\t}{\theta}
+\renewcommand{\S}{\Sigma}
+\newcommand{\s}{\sigma}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\newcommand{\sse}{\subseteq}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\ip}[2]{\lbr{#1,#2}}
+\renewcommand{\bar}{\overline}
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator{\Arg}{Arg}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+\renewcommand{\L}{\mathcal{L}}
+
+% title
+\title{Scientific Computing HW 6}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+
+
+
+\begin{enumerate}
+	
+	
+	
+	\item 
+	
+	\begin{enumerate}
+		
+		
+		
+		\item Consider the following.
+		\[\sum_i\sum_j\sum_k a_{ik}b_{kj}c_{ji} = \sum_i\sum_j\sum_k b_{kj}c_{ji}a_{ik} = \sum_i\sum_j\sum_k c_{ji}a_{ik}b_{kj}\]
+		The first, second, and third expressions are, respectively, $\tr(ABC)$, $\tr(BCA)$, and $\tr(CAB)$.
+		
+		
+		
+		\item Compute
+		\begin{align*}
+			\norm{A}_F^2 &= \sum_i\sum_j a_{ij}^2 \\
+			&= \tr(A^TA) \\
+			&= \tr(V\S U^TU\S V^T) & A = U\S V^T \\
+			&= \tr(V\S^2V^T) \\
+			&= \tr(\S^2V^TV) & \text{cyclic property of trace} \\
+			&= \tr(\S^2) \\
+			&= \sum_i \s_i^2
+		\end{align*}
+		
+		
+		
+		\item Compute
+		\begin{align*}
+			\norm{A+B}_F^2 &= \sum_i\sum_j (a_{ij}+b_{ij})^2 \\
+			&= \sum_i\sum_j a_{ij}^2 + \sum_i\sum_j b_{ij}^2 + 2\sum_i\sum_j a_{ij}b_{ij} \\
+			&= \norm{A}_F^2 + \norm{B}_F^2 + 2\ip{A}{B}_F
+		\end{align*}
+		
+		
+		
+	\end{enumerate}
+
+
+
+	\pagebreak
+	
+	
+	
+	\item Let $A$ have size $n\times d$ with $n\ge d$. Observe that
+	\[A_k = U_k\S_kV_k^T = U\S_k'V^T\]
+	where $\S_k'$ is obtained by adding zeros to $\S_k$ to make it the same size as $\S$. Then
+	\[A - A_k = U(\S-\S_k')V^T\]
+	is an SVD of $A-A_k$ with the $j$th diagonal entry of $\S-\S_k'$ being 0 for $j\le k$ and $\s_j(A)$ for $j>k$. Thus
+	\[\norm{A-A_k}_{KF(p)}^p = \sum_{j=1}^d \s_j^p(A-A_k) = \sum_{j=k+1}^d \s_j^p(A)\]
+	Fix an $n\times d$ matrix $M$ with $\rank M\le k$. Using the above calculation,
+	\begin{align*}
+		\norm{A-M}_{KF(p)}^p &= \sum_{i=1}^d \s_i^p(A-M) \\
+		&\ge \sum_{i=1}^{d-k}\s_i^p(A-M) \\
+		&\ge \sum_{i=1}^{d-k}\s_{k+i}^p(A) & \text{by Lemma 1, } \s_{k+i}(A) \le \s_i(A-M) + \s_{k+1}(M) = \s_i(A-M) \\
+		&= \sum_{j=k+1}^d \s_j^p(A) & j := k+i \\
+		&= \norm{A-A_k}_{KF(p)}^p
+	\end{align*}
+	Taking the $p$th root of both sides gives $\norm{A-M}_{KF(p)}^p \ge \norm{A-A_k}_{KF(p)}^p$.
+
+
+
+	\pagebreak
+	
+	
+	
+	\item
+	
+	\begin{enumerate}
+		
+		
+		
+		\item 
+		
+		
+		
+		\item
+		
+		
+		
+		\item
+		
+		
+		
+	\end{enumerate}
+	
+	
+	
+\end{enumerate}
+
+	
+	
+\end{document}
