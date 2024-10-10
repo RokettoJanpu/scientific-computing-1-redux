@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  7 OCT 2024 00:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.11)  9 OCT 2024 21:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1113,8 +1113,30 @@ File: uesint.fd
 {C:/Users/RyanPC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-[3] (hw6.aux)
+Overfull \hbox (5.40807pt too wide) in paragraph at lines 147--148
+[]\OT1/cmr/m/n/10 (-20) Code: []$\OT1/cmtt/m/n/10 https : / / github . com / Ro
+kettoJanpu / scientific-[]computing-[]1-[]redux / blob / main / hw6 . ipynb$[] 
+
+ []
+
+<hw6 pgd.png, id=30, 578.16pt x 578.16pt>
+File: hw6 pgd.png Graphic file (type png)
+<use hw6 pgd.png>
+Package pdftex.def Info: hw6 pgd.png  used on input line 155.
+(pdftex.def)             Requested size: 173.44933pt x 173.44933pt.
+<hw6 hals.png, id=32, 578.16pt x 578.16pt>
+File: hw6 hals.png Graphic file (type png)
+<use hw6 hals.png>
+Package pdftex.def Info: hw6 hals.png  used on input line 163.
+(pdftex.def)             Requested size: 173.44933pt x 173.44933pt.
+
+
+[3 <./hw6 pgd.png> <./hw6 hals.png>] (hw6.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-16>
@@ -1123,11 +1145,11 @@ Package rerunfilecheck Info: File `hw6.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33887 strings out of 473898
- 713643 string characters out of 5726007
+ 33921 strings out of 473898
+ 714179 string characters out of 5726007
  1947960 words of memory out of 5000000
- 56194 multiletter control sequences out of 15000+600000
- 566915 words of font info for 90 fonts, out of 8000000 for 9000
+ 56223 multiletter control sequences out of 15000+600000
+ 567185 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  116i,10n,145p,1002b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
@@ -1140,10 +1162,11 @@ onts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/RyanPC/AppData/Local/Programs
 ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Rya
 nPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:
 /Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb>
-Output written on hw6.pdf (3 pages, 110653 bytes).
+7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb>
+Output written on hw6.pdf (3 pages, 222276 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
+ 90 PDF objects out of 1000 (max. 8388607)
  13 named destinations out of 1000 (max. 500000)
- 14349 words of extra memory for PDF output out of 14400 (max. 10000000)
+ 14871 words of extra memory for PDF output out of 17280 (max. 10000000)
 

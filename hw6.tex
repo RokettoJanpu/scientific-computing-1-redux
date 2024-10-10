@@ -73,6 +73,8 @@
 
 
 
+Note: For sums we assume the lower bound to be 1 unless otherwise specified, and we will not specify upper bounds since they are determined by the sizes of our matrices.
+
 \begin{enumerate}
 	
 	
@@ -119,21 +121,22 @@
 	
 	
 	
-	\item Let $A$ have size $n\times d$ with $n\ge d$. Observe that
+	\item Observe that
 	\[A_k = U_k\S_kV_k^T = U\S_k'V^T\]
 	where $\S_k'$ is obtained by adding zeros to $\S_k$ to make it the same size as $\S$. Then
 	\[A - A_k = U(\S-\S_k')V^T\]
-	is an SVD of $A-A_k$ with the $j$th diagonal entry of $\S-\S_k'$ being 0 for $j\le k$ and $\s_j(A)$ for $j>k$. Thus
-	\[\norm{A-A_k}_{KF(p)}^p = \sum_{j=1}^d \s_j^p(A-A_k) = \sum_{j=k+1}^d \s_j^p(A)\]
-	Fix an $n\times d$ matrix $M$ with $\rank M\le k$. Using the above calculation,
+	is an SVD of $A-A_k$ with the $j$th diagonal entry of $\S-\S_k'$ being 0 for $j\le k$ and $\s_j(A)$ for $j>k$. Denoting the Ky Fan $p-$norm by $\norm{\cdot}_{KF(p)}$,
+	\[\norm{A-A_k}_{KF(p)}^p = \sum_j \s_j^p(A-A_k) = \sum_{j\ge k+1} \s_j^p(A)\]
+	Fix a matrix $M$ with $\rank M\le k$. By Lemma 1 in Section 4.3 of the lecture notes,
+	\[\s_{k+i}(A) \le \s_i(A-M) + \s_{k+1}(M) = \s_i(A-M)\]
+	Then we have
 	\begin{align*}
-		\norm{A-M}_{KF(p)}^p &= \sum_{i=1}^d \s_i^p(A-M) \\
-		&\ge \sum_{i=1}^{d-k}\s_i^p(A-M) \\
-		&\ge \sum_{i=1}^{d-k}\s_{k+i}^p(A) & \text{by Lemma 1, } \s_{k+i}(A) \le \s_i(A-M) + \s_{k+1}(M) = \s_i(A-M) \\
-		&= \sum_{j=k+1}^d \s_j^p(A) & j := k+i \\
+		\norm{A-M}_{KF(p)}^p &= \sum_i \s_i^p(A-M) \\
+		&\ge \sum_i \s_{k+i}^p(A) & \s_{k+i}(A) \le \s_i(A-M) \\
+		&= \sum_{j\ge k+1} \s_j^p(A) & \text{change variables } j := k+i \\
 		&= \norm{A-A_k}_{KF(p)}^p
 	\end{align*}
-	Taking the $p$th root of both sides gives $\norm{A-M}_{KF(p)}^p \ge \norm{A-A_k}_{KF(p)}^p$.
+	Taking the $p$th root of both sides gives $\norm{A-M}_{KF(p)} \ge \norm{A-A_k}_{KF(p)}$.
 
 
 
@@ -141,21 +144,29 @@
 	
 	
 	
-	\item
+	\item Code: \url{https://github.com/RokettoJanpu/scientific-computing-1-redux/blob/main/hw6.ipynb}
 	
 	\begin{enumerate}
 		
 		
 		
-		\item 
+		\item Here we run PGD five times.
+		\begin{center}
+			\includegraphics[scale=.3]{hw6 pgd}
+		\end{center}
+		The residual norm settles at around 80 iterations. Its eventual value is about 190 in each trial. Examining entries of $W$ greater than 0.2, we hypothesize that the documents are advertizements of events and services in various communities across the country.
 		
 		
 		
-		\item
+		\item Here we run HALS five times.
+		\begin{center}
+			\includegraphics[scale=.3]{hw6 hals}
+		\end{center}
+		The residual norm settles at around 20 iterations. Its eventual value is about 188 in each trial. 
 		
+
 		
-		
-		\item
+		\item Using the SVD of $A$, we find $\norm{A-A_{10}}_F\approx 187.72$, slightly below the residual norms of both PGD and HALS, as expected by the Eckart--Young--Mirsky theorem.
 		
 		
 		
