@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  22 OCT 2024 16:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  23 OCT 2024 03:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -972,24 +972,24 @@ Package csquotes Info: ... found 'babel' package.
  (hw8.aux)
 \openout1 = `hw8.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
+LaTeX Font Info:    ... okay on input line 66.
 
 
 Package siunitx Warning: Detected the "physics" package:
@@ -1009,7 +1009,7 @@ File: translations-basic-dictionary-english.trsl (english translation file `tra
 nslations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `english'. on input line 64.
+or `english'. on input line 66.
 
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.m
 kii
@@ -1050,19 +1050,19 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-LaTeX Info: Redefining \microtypecontext on input line 64.
-Package microtype Info: Applying patch `item' on input line 64.
-Package microtype Info: Applying patch `toc' on input line 64.
-Package microtype Info: Applying patch `eqnum' on input line 64.
-Package microtype Info: Applying patch `footnote' on input line 64.
-Package microtype Info: Applying patch `verbatim' on input line 64.
+LaTeX Info: Redefining \microtypecontext on input line 66.
+Package microtype Info: Applying patch `item' on input line 66.
+Package microtype Info: Applying patch `toc' on input line 66.
+Package microtype Info: Applying patch `eqnum' on input line 66.
+Package microtype Info: Applying patch `footnote' on input line 66.
+Package microtype Info: Applying patch `verbatim' on input line 66.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 64.
+LaTeX Info: Redefining \showhyphens on input line 66.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1070,14 +1070,14 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-Package hyperref Info: Link coloring OFF on input line 64.
+Package hyperref Info: Link coloring OFF on input line 66.
 
 (hw8.out) (hw8.out)
 \@outlinefile=\write7
 \openout7 = `hw8.out'.
 
-Package csquotes Info: Making character " active on input line 64.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+Package csquotes Info: Making character " active on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 69.
 
 
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1086,7 +1086,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
 
 
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1095,14 +1095,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 67
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 69
 .
 
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+esint on input line 6
-7.
+9.
 
 (C:\Users\RyanPC\AppData\Local\Programs\MiKTeX\tex/latex/esint\uesint.fd
 File: uesint.fd 
@@ -1119,22 +1119,22 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-<committor without preconditioning.png, id=37, 462.528pt x 346.896pt>
+<committor without preconditioning.png, id=43, 462.528pt x 346.896pt>
 File: committor without preconditioning.png Graphic file (type png)
 <use committor without preconditioning.png>
 Package pdftex.def Info: committor without preconditioning.png  used on input l
-ine 151.
+ine 227.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-<committor with preconditioning.png, id=39, 462.528pt x 346.896pt>
+<committor with preconditioning.png, id=45, 462.528pt x 346.896pt>
 File: committor with preconditioning.png Graphic file (type png)
 <use committor with preconditioning.png>
 Package pdftex.def Info: committor with preconditioning.png  used on input line
- 152.
+ 228.
 (pdftex.def)             Requested size: 185.0079pt x 138.75594pt.
-<residual norm.png, id=40, 462.528pt x 346.896pt>
+<residual norm.png, id=46, 462.528pt x 346.896pt>
 File: residual norm.png Graphic file (type png)
 <use residual norm.png>
-Package pdftex.def Info: residual norm.png  used on input line 153.
+Package pdftex.def Info: residual norm.png  used on input line 229.
 (pdftex.def)             Requested size: 231.26343pt x 173.44757pt.
 
 
@@ -1148,27 +1148,33 @@ Package rerunfilecheck Info: File `hw8.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33923 strings out of 473898
- 714939 string characters out of 5726006
- 1107110 words of memory out of 5000000
- 56227 multiletter control sequences out of 15000+600000
- 567083 words of font info for 91 fonts, out of 8000000 for 9000
+ 33947 strings out of 473898
+ 715252 string characters out of 5726006
+ 1109109 words of memory out of 5000000
+ 56238 multiletter control sequences out of 15000+600000
+ 567706 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,13n,145p,1002b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
-msfonts/cm/cmmi7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1
-/public/amsfonts/cm/cmr10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/RyanPC/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/RyanPC/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/RyanPC/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Rya
-nPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/
-Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt1
-0.pfb>
-Output written on hw8.pdf (4 pages, 143463 bytes).
+ 116i,13n,145p,1002b,1123s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\RyanPC\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcr
+m1000.pk><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmex10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/RyanPC/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/RyanPC/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/RyanPC/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Ryan
+PC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/U
+sers/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.p
+fb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmr7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmsy5.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/RyanPC/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/RyanPC/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on hw8.pdf (4 pages, 209325 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
+ 123 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)
- 14876 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 16924 words of extra memory for PDF output out of 17280 (max. 10000000)
 
