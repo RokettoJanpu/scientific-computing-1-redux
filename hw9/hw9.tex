@@ -1,0 +1,141 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\bar}{\overline}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+
+% greek
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\varphi}
+\renewcommand{\t}{\theta}
+
+% title
+\title{Scientific Computing HW 9}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+	
+
+
+\begin{enumerate}
+	
+	
+	
+	\item 
+	
+	\begin{enumerate}
+		
+		
+		
+		\item Label the three factors in the claimed factorization as $L,S,U$. Compute
+		\[LS = \m{L_{11} & & \\ & L_{22} & \\ A_{31}U_{11}\inv & A_{32}U_{22}\inv & S_{33}}
+		\imp LSU = \m{A_{11} & & A_{13} \\ & A_{22} & A_{23} \\ A_{31} & A_{32} & B}\]
+		where
+		\[B := A_{31}U_{11}\inv L_{11}\inv A_{13} + A_{32}U_{22}\inv L_{22}\inv A_{23} + S_{33}\]
+		Imposing $A=LSU$ gives a formula for the Schur complement $S_{33}$.
+		\begin{align*}
+			A = LSU
+			&\iff B = A_{33} \\
+			&\iff A_{31}U_{11}\inv L_{11}\inv A_{13} + A_{32} U_{22}\inv L_{22}\inv A_{23} + S_{33} = A_{33} \\
+			&\iff S_{33} = A_{33} - A_{31}U_{11}\inv L_{11}\inv A_{13} - A_{32} U_{22}\inv L_{22}\inv A_{23}
+		\end{align*}
+
+		
+	
+	
+		\item Given $S_{33}=L_{33}U_{33}$, the LU decomposition of $A$ is
+		\[A = \m{L_{11} & & \\ & L_{22} & \\ A_{31}U_{11}\inv & A_{32}U_{22}\inv & L_{33}}
+			  \m{U_{11} & & L_{11}\inv A_{13} \\ & U_{22} & L_{22}\inv A_{23} \\ & & U_{33}}\]
+		
+		
+		
+	\end{enumerate}
+
+
+
+	\pagebreak
+	
+	
+	
+	\item Code: \url{https://github.com/RokettoJanpu/scientific-computing-1-redux/blob/main/hw9/hw9.ipynb}
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	\item The algorithm does not compute the Cholesky decomposition of $A_{11}$ or $A_{22}$ until the grid size is small, so we only consider the costs of computing the Schur complement $S_{33}$ and its Cholesky decomposition on each level.
+	
+	We will focus on level 0. The block sizes of the tessellation of $A$ are
+	\begin{align*}
+		A_{11},A_{22}&: \frac N2\times\frac N2 \\
+		A_{13},A_{23}&: \frac N2\times N^{1/2} \\
+		A_{31},A_{32}&: N^{1/2}\times\frac N2 \\
+		A_{33}&: N^{1/2}\times N^{1/2}
+	\end{align*}
+	We compute $S_{33}$ via
+	\[S_{33} = A_{33} - A_{31}U_{11}\inv L_{11}\inv A_{13} - A_{32} U_{22}\inv L_{22}\inv A_{23}\]
+	According to the block sizes, a product involving the inverse of a triangular matrix, e.g. $L_{11}\inv A_{13}$, may be considered as solving a sparse nonsingular triangular $\frac N2\times\frac N2$ system with $N^{1/2}$ RHS vectors, and there are 4 products to compute. Being sparse gives roughly $\frac N2$ nonzero entries, and being nonsingular triangular forces at least $\frac N2$ of the nonzero entries to lie on the diagonal, so the system is roughly diagonal. Thus the cost is $\frac N2N^{1/2}4=2N^{3/2}$.
+	
+	The cost of computing $AB$, where $A$ is $m\times k$ sparse and $B$ is $k\times n$ possibly nonsparse, is roughly $2nnz(A)ncols(B)$ with $nnz(A)$ the number of nonzero entries of $A$ and $ncols(B)$ the number of columns of $B$. There are two products involving a sparse matrix and a possibly nonsparse matrix, e.g. $A_{31}(U_{11}\inv L_{11}\inv A_{13})$. Considering the block sizes and $A_{31}$ sparse with roughly $\frac N2$ nonzero entries, estimate the cost as $2\frac N2N^{1/2}2=2N^{3/2}$.
+	
+	There are two sums of $N^{1/2}\times N^{1/2}$ possibly nonsparse matrices to compute, contributing $2N$ to the cost. Thus the total cost of computing $S_{33}$ is $4N^{3/2}$. Then the cost of computing the Cholesky decomposition of $S_{33}$, it being $N^{1/2}\times N^{1/2}$, is $\frac13N^{3/2}$. In conclusion, the cost of level 0 is $aN^{3/2}$ where $a:=\frac{13}{3}$.
+	
+	Now consider the cost on level $k$. The meshgrid is partitioned with $2^k$ "dividers" of length $\br{\frac{N}{2^k}}^{1/2}$ each. Applying the reasoning behind the cost of level 0, the cost of level $k$ is $a2^k\br{\frac{N}{2^k}}^{3/2} = aN^{3/2}(2^{-1/2})^k$. Thus the cost of the entire algorithm is estimated as
+	\[W \le aN^{3/2}\sum_{k=0}^\infty (2^{-1/2})^k = \frac{13}{3}\frac{1}{1-2^{-1/2}}N^{3/2}\]
+	
+	
+	
+\end{enumerate}
+	
+	
+\end{document}
