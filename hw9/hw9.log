@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  30 OCT 2024 23:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  30 OCT 2024 23:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1134,7 +1134,7 @@ Here is how much of TeX's memory you used:
  56196 multiletter control sequences out of 15000+600000
  567338 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,8n,145p,1002b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,8n,145p,1002b,1118s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmex10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
 msfonts/cm/cmmi10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type
@@ -1148,7 +1148,7 @@ Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy1
 0.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/publi
 c/amsfonts/cm/cmtt10.pfb>
-Output written on hw9.pdf (3 pages, 135556 bytes).
+Output written on hw9.pdf (3 pages, 136304 bytes).
 PDF statistics:
  86 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)
