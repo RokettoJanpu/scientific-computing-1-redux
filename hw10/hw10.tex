@@ -1,0 +1,183 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\bar}{\overline}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+
+% greek
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\varphi}
+\renewcommand{\t}{\theta}
+\renewcommand{\a}{\alpha}
+\renewcommand{\l}{\lambda}
+
+% title
+\title{Scientific Computing HW10}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+	
+
+
+\begin{enumerate}
+	
+	
+	
+	\item Exercise 3.5 of [NW] as a lemma: If $B$ is nonsingular then
+	\[\norm{Bx} \ge \frac{\norm{x}}{\norm{B\inv}}\]
+	\pf First $\norm{x} = \norm{B\inv Bx} \le \norm{B\inv}\norm{Bx}$, then divide by $\norm{B\inv}$. \qed
+	
+	The direction is given by
+	\[p = -B\inv\grad f(x)\]
+	We can rewrite this as
+	\[\grad f(x) = -Bp\]
+	Given SPD $B$ we can define $B^{1/2}$ and $B^{-1/2}$, moreover $\norm{B^{1/2}}=\norm{B}^{1/2}$ and $\norm{B^{-1/2}}=\norm{B}^{-1/2}$. Then compute
+	\begin{align*}
+		\cos\t &= -\frac{\grad f(x)^Tp}{\norm{\grad f(x)}\norm{p}} \\
+		&= \frac{p^TBp}{\norm{Bp}\norm{p}} \\
+		&\ge \frac{p^TBp}{\norm{B}\norm{p}^2} & \norm{Bp} \le \norm{B}\norm{p} \\
+		&= \frac{\norm{B^{1/2}p}^2}{\norm{B}\norm{p}^2} & p^TBp = p^TB^{1/2}B^{1/2}p = \norm{B^{1/2}p}^2 \\
+		&= \frac{\norm{p}^2}{\norm{B^{-1/2}}^2\norm{B}\norm{p}^2} & \text{by lemma} \\
+		&= \frac{1}{\norm{B\inv}\norm{B}} \\
+		&= \frac{1}{\kappa(B)} \\
+		&> 0
+	\end{align*}
+	This establishes $\cos\t$ as bounded away from zero.
+	
+	
+	\pagebreak
+	
+	
+	
+	\item
+	
+	\begin{enumerate}
+		
+		
+		
+		\item Compute
+		\begin{align*}
+			y_k^Ts_k &= (\grad f_{k+1}^T - \grad f_k^T)\a_kp_k \\
+			&= \a_k(\grad f_{k+1}^Tp_k - \grad f_k^Tp_k) \\
+			&\ge \a_k(c_2\grad f_k^Tp_k - \grad f_k^Tp_k) & \text{Wolfe condition 2} \\
+			&= \a_k(c_2-1)\grad f_k^Tp_k \\
+			&> 0 & \text{$\grad f_k^Tp_k$ by Problem 1, and $c_2<1$}
+		\end{align*}
+		
+		
+		
+		\item The inner product and norm induced by $B_k$ are
+		\[(u,v)_{B_k} := v^TB_ku,
+		\quad \norm{u}_{B_k} := \sqrt{(u,u)_{B_k}}\]
+		For all $z\ne0$,
+		\begin{align*}
+			z^TB_{k+1}z &= \norm{z}_{B_k}^2 - \frac{(z,s_k)_{B_k}^2}{\norm{s_k}_{B_k}^2} + \frac{(z^Ty_k)^2}{y_k^Ts_k} \\
+			&> \norm{z}_{B_k}^2 - \frac{(z,s_k)_{B_k}^2}{\norm{s_k}_{B_k}^2} & y_k^Ts_k > 0 \\
+			&\ge \norm{z}_{B_k}^2 - \frac{\norm{z}_{B_k}^2\norm{s_k}_{B_k}^2}{\norm{s_k}_{B_k}^2} & \text{Cauchy--Schwarz} \\
+			&= 0
+		\end{align*}
+		Thus $B_{k+1}$ is SPD.
+		
+		
+		
+	\end{enumerate}
+
+
+
+	\pagebreak
+	
+	
+	
+	\item
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	\item
+	
+	\begin{enumerate}
+		
+		
+		
+		
+		\item Compute
+		\[\d_xf = 200(y-x^2)(-2x) + 2(1-x)(-1) = -400x(y-x^2) + 2(x-1)\]
+		\[\d_yf = 200(y-x^2)\]
+		Critical points are found by solving $\d_xf=\d_yf=0$. From $\d_yf=0$ we get $y=x^2$. Plugging this into $\d_xf=0$ gives $x=1$. Thus the only critical point is $(1,1)$.
+		
+		The Hessian is
+		\[H(x,y) = \m{\d_x^2f & \d_x\d_yf \\ \d_x\d_yf & \d_y^2f} = \m{-400(y-3x^2)+2 & -400x \\ -400x & 200}\]
+		Evaluate it at the critical point.
+		\[H(1,1) = \m{802 & -400 \\ -400 & 200}\]
+		Its eigenvalues $\l_1,\l_2$ are given by
+		\[\l_1+\l_2 = \tr H(1,1) = 1002\]
+		\[\l_1\l_2 = \det H(1,1) = 400\]
+		From $\l_1+\l_2>0$ and $\l_1\l_2>0$ we have $\l_1,\l_2>0$ hence $H(1,1)$ is SPD. We conclude that the only critical point $(1,1)$ is a local minimizer.
+		 
+		
+		
+		\item
+		
+		
+		
+		
+	\end{enumerate}
+	
+	
+	
+\end{enumerate}
+	
+	
+	
+\end{document}
