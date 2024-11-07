@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  6 NOV 2024 19:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.14)  6 NOV 2024 22:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1113,8 +1113,22 @@ File: uesint.fd
 {C:/Users/RyanPC/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
 [2]
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 
-[3] (hw10.aux)
+Overfull \hbox (17.48297pt too wide) in paragraph at lines 139--140
+[]\OT1/cmr/m/n/10 (-20) Code: []$\OT1/cmtt/m/n/10 https : / / github . com / Ro
+kettoJanpu / scientific-[]computing-[]1-[]redux / blob / main / hw10 / hw10p3 .
+
+ []
+
+
+
+[3]
+
+[4] (hw10.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-08-30>
@@ -1123,13 +1137,13 @@ Package rerunfilecheck Info: File `hw10.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 33924 strings out of 473898
- 714244 string characters out of 5726006
+ 33933 strings out of 473898
+ 714375 string characters out of 5726006
  1110115 words of memory out of 5000000
- 56207 multiletter control sequences out of 15000+600000
- 570144 words of font info for 107 fonts, out of 8000000 for 9000
+ 56214 multiletter control sequences out of 15000+600000
+ 570312 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,16n,145p,1003b,1124s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,16n,145p,1003b,1126s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm
 /cmbsy10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/typ
@@ -1143,10 +1157,11 @@ ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
 mr17.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
 onts/cm/cmr7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts/type1/pub
 lic/amsfonts/cm/cmsy10.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on hw10.pdf (3 pages, 140392 bytes).
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/RyanPC/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on hw10.pdf (4 pages, 156558 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 12 named destinations out of 1000 (max. 500000)
- 20493 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 104 PDF objects out of 1000 (max. 8388607)
+ 13 named destinations out of 1000 (max. 500000)
+ 21005 words of extra memory for PDF output out of 24883 (max. 10000000)
 
