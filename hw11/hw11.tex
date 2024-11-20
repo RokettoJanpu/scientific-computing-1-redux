@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage{amsfonts, amsthm, amsmath, amssymb, mathtools, ulem, mathrsfs, physics, esint, siunitx, tikz-cd}
+\usepackage{pdfpages, fullpage, color, microtype, cancel, textcomp, markdown, hyperref, graphicx}
+\usepackage{enumitem}
+\graphicspath{{./images/}}
+\usepackage[english]{babel}
+\usepackage[autostyle, english=american]{csquotes}
+\MakeOuterQuote{"}
+\usepackage{xparse}
+\usepackage{tikz}
+\usepackage{algpseudocode}
+
+% fonts
+\def\mbb#1{\mathbb{#1}}
+\def\mfk#1{\mathfrak{#1}}
+\def\mbf#1{\mathbf{#1}}
+\def\tbf#1{\textbf{#1}}
+
+% common bold letters
+\def\bP{\mbb{P}}
+\def\bC{\mbb{C}}
+\def\bH{\mbb{H}}
+\def\bI{\mbb{I}}
+\def\bR{\mbb{R}}
+\def\bQ{\mbb{Q}}
+\def\bZ{\mbb{Z}}
+\def\bN{\mbb{N}}
+
+% brackets
+\newcommand{\br}[1]{\left(#1\right)}
+\newcommand{\sbr}[1]{\left[#1\right]}
+\newcommand{\brc}[1]{\left\{#1\right\}}
+\newcommand{\lbr}[1]{\left\langle#1\right\rangle}
+
+% matrices
+\newcommand{\m}[2][b]{\begin{#1matrix}#2\end{#1matrix}}
+\newcommand{\arr}[3][\sbr]{#1{\begin{array}{#2}#3\end{array}}}
+
+% misc
+\NewDocumentCommand{\app}{O{x} O{\infty}}{\xrightarrow{#1\to#2}}
+\renewcommand{\ss}{\subset}
+\newcommand{\vn}{\varnothing}
+\newcommand{\inv}{^{-1}}
+\newcommand{\imp}{\implies}
+\newcommand{\impleft}{\reflectbox{$\implies$}}
+\renewcommand{\bar}{\overline}
+\renewcommand{\d}{\partial}
+\newcommand{\pf}{\tbf{Proof. }}
+
+% greek
+\newcommand{\e}{\epsilon}
+\newcommand{\p}{\varphi}
+\renewcommand{\t}{\theta}
+\renewcommand{\l}{\lambda}
+\newcommand{\D}{\Delta}
+
+% title
+\title{Scientific Computing HW 11}
+\author{Ryan Chen}
+%\date{\today}
+\setlength{\parindent}{0pt}
+
+
+\begin{document}
+	
+\maketitle
+	
+
+
+\begin{enumerate}
+	
+	
+	
+	\item 
+	
+	\begin{enumerate}
+		
+		
+		
+		\item If $v=0$ then $\ip{u}{v}=0$ and $\ip{u}{u}\ip{v}{v}=0$, so the Cauchy--Schwarz inequality holds. Now assume $v\ne0$. The function
+		\[p(t) := \ip{u+tv}{u+tv},~ t\in\bR\]
+		is nonnegative due to positive--definiteness of the inner product. Expand $p(t)$ as
+		\[p(t) = \ip{v}{v}t^2 + 2\ip{u}{v}t + \ip{u,u}\]
+		which is a quadratic in $t$ due to positive--definiteness $(\ip{v}{v}>0)$. Its discriminant is
+		\[\Delta = 4\ip{u}{v}^2 - 4\ip{u}{u}\ip{v}{v} = 4(\ip{u}{v}^2-\ip{u}{u}\ip{v}{v})\]
+		Since $p$ is nonnegative, it does not change sign, hence $\Delta\le0$, from which the Cauchy--Schwarz inequality follows.
+		
+		
+		
+		\item Since $B$ is SPD, we can define the matrices $B^{1/2}$ and $B^{-1/2}$. Then
+		\begin{align*}
+			(g^TBg)(g^TB\inv g) &= (g^TB^{1/2}B^{1/2}g)(g^TB^{-1/2}B^{-1/2}g)\\
+			&= \ip{B^{1/2}g}{B^{1/2}g}\ip{B^{-1/2}g}{B^{-1/2}g} \\
+			&\ge \ip{B^{1/2}g}{B^{-1/2}g}^2 & \text{by Cauchy--Schwarz} \\
+			&= (g^TB^{1/2}B^{-1/2}g)^2 \\
+			&= (g^Tg)^2
+		\end{align*}
+		
+		
+		
+	\end{enumerate}
+	
+	
+	
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	
+	
+	
+	\item For convenience write $\l=\l^{(l)}$. To prove that the iterations are equivalent, we must show that
+	\[-\frac{\phi(\l)}{\phi'(\l)} = \frac{\norm{p_l}^2}{\norm{z_l}^2}\frac{\norm{p_l}-\D}{\D}\]
+	
+	First we establish some equalities. Observe that
+	\begin{align*}
+		\frac{q_j^Tg}{\l_j+\l} &= [(B+\l I)\inv q_j]^Tg \\
+		&= q_j^T(B+\l I)\inv g \\
+		&= -q_j^Tp_l
+	\end{align*}
+	hence
+	\begin{equation}\label{eq:2.1}
+		\frac{(q_j^Tg)^2}{(\l_j+\l)^2} = (q_j^Tp_l)^2
+	\end{equation}
+	Also observe that
+	\begin{align*}
+		\frac{q_j^Tg}{(\l_j+\l)^{1/2}} &= [(B+\l I)^{-1/2} q_j]^Tg \\
+		&= q_j^T (B+\l I)^{-1/2} g \\
+		&= q_j^T L\inv p_l \\
+		&= q_j^T z_l
+	\end{align*}
+	This, along with \eqref{eq:2.1}, implies
+	\begin{equation}\label{eq:2.2}
+		\frac{(q_j^Tg)^2}{(\l_j+\l)^3} = \frac{(q_j^Tp_l)^2}{\l_j+\l} = (q_j^Tp_l)^2
+	\end{equation}	
+	Since $B$ is SPD, we may take the $q_j$'s to form an orthonormal basis of $\bR^n$, so that
+	\begin{equation}\label{eq:2.3}
+		\norm{x}^2 = \sum_j (q_j^Tx)^2,~ x\in\bR^n
+	\end{equation}
+	
+	Rewrite $\phi(\l)$.
+	\begin{align*}
+		\phi(\l) &= \D\inv - \sbr{\sum_j \frac{(q_j^Tg)^2}{(\l_j+\l)^2}}^{-1/2} \\
+		&= \D\inv - \sbr{\sum_j (q_j^Tp_l)}^{-1/2} & \text{by \eqref{eq:2.1}} \\
+		&= \D\inv - \norm{p_l}\inv & \text{by \eqref{eq:2.3}}
+	\end{align*}
+	Obtain and rewrite $\phi'(\l)$.
+	\begin{align*}
+		\phi'(\l) &= -\sbr{\sum_j \frac{(q_j^Tg)^2}{(\l_j+\l)^2}}^{-3/2}\sum_j \frac{(q_j^Tg)^2}{(\l_j+\l)^3} \\
+		&= -\sbr{\sum_j (q_j^Tp_l)^2}^{-3/2} \sum_j (q_j^Tz_l)^2 & \text{by \eqref{eq:2.1} and \eqref{eq:2.2}} \\
+		&= -\norm{p_l}^{-3}\norm{z_l}^2 & \text{by \eqref{eq:2.3}}
+	\end{align*}
+	Finally, we have
+	\begin{align*}
+		-\frac{\phi(\l)}{\phi'(\l)} &= \frac{\D\inv - \norm{p_l}\inv}{\norm{p_l}^{-3}\norm{z_l}^2} \\
+		&= \frac{\D\inv - \norm{p_l}\inv}{\norm{p_l}^{-3}\norm{z_l}^2} \cdot \frac{\D\norm{p_l}}{\D\norm{p_l}} \\
+		&= \frac{\norm{p_l}-\D}{\norm{p_l}^{-2}\norm{z_l}^2\D} \\
+		&= \frac{\norm{p_l}^2}{\norm{z_l}^2}\frac{\norm{p_l}-\D}{\D}
+	\end{align*}
+
+	
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	
+	
+	
+	\item
+	
+	
+	
+	
+	
+	
+	\pagebreak
+	
+	
+	
+	
+	
+	
+	\item
+	
+	
+	
+\end{enumerate}
+	
+	
+\end{document}
